@@ -1,0 +1,43 @@
+﻿
+@using DataObject.Model
+@model ForumTopic
+
+<div class="profile-body">
+    <h2 class="current-progress text-left" style="padding-left: 50px;">New Topic</h2>
+    <div class="row">
+        <div class="col-xs-12 col-md-12 unregisteredDetails">
+            <form class="reg-page log-reg-page" method="post" action="/Forum/NewTopic">
+                <br>                <!-- Success state starts here-->
+                @Html.AntiForgeryToken()
+                <div class="form-group" style="text-align:center">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-7 text-danger">
+                        @ViewBag.Error
+                    </div>
+                </div>
+                <div class="form-group has-success has-feedback">
+                    <label class="labelStyle">Head Line</label>
+                    @Html.TextBoxFor(tuple => tuple.ForumTitle, new { name = "ForumTitle", id = "ForumTitle", @class = "placeHolderStyle form-control margin-bottom-20" })
+                    @*<input class="placeHolderStyle form-control margin-bottom-20" name="ForumTitle" id="ForumTitle" placeholder="" type="text">*@
+                </div>
+                <div class="form-group has-success has-feedback">
+                    <label class="labelStyle">Description</label>
+                    @Html.TextAreaFor(tuple => tuple.ForumDesc, new { rows = "5", cols = "10", name = "ForumDesc", id = "ForumDesc", @class = "placeHolderStyle form-control margin-bottom-20" })
+                    @*<textarea class="placeHolderStyle form-control margin-bottom-20" name="ForumDesc" id="ForumDesc" placeholder="" rows="5" cols="10" type="text"></textarea>*@
+                </div>
+                <br>
+                <div class="row labelStyle">
+                    <div class="col-sm-6" style="padding-bottom:25px">
+                        <button class="btn-u btn-block" type="submit">Create</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <button class="btn-Back btn-block" type="submit">Cancel</button>
+                    </div>
+                </div>
+                <br>
+            </form>
+        </div>
+    </div>
+</div>
+

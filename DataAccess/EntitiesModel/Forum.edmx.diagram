@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4fb66fade14f4d65aa12b6d30003dfc6" Name="Diagram1">
+        <EntityTypeShape EntityType="ForumAppDBModel.AspNetMenuRole" Width="1.5" PointX="5.5" PointY="1.375" />
+        <EntityTypeShape EntityType="ForumAppDBModel.AspNetRole" Width="1.5" PointX="3.5" PointY="0.5" />
+        <EntityTypeShape EntityType="ForumAppDBModel.AspNetUserClaim" Width="1.5" PointX="2.75" PointY="3.25" />
+        <EntityTypeShape EntityType="ForumAppDBModel.AspNetUserLogin" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="ForumAppDBModel.AspNetUserRole" Width="1.5" PointX="5.75" PointY="4.5" />
+        <EntityTypeShape EntityType="ForumAppDBModel.AspNetUser" Width="1.5" PointX="0.5" PointY="3.875" />
+        <EntityTypeShape EntityType="ForumAppDBModel.TopicReply" Width="1.5" PointX="10" PointY="7.625" />
+        <AssociationConnector Association="ForumAppDBModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" />
+        <AssociationConnector Association="ForumAppDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="ForumAppDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="ForumAppDBModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" />
+        <EntityTypeShape EntityType="ForumAppDBModel.ForumTopic" Width="1.5" PointX="7.75" PointY="7.75" />
+        <AssociationConnector Association="ForumAppDBModel.FK_TopicReplies_ForumTopics" />
+        <EntityTypeShape EntityType="ForumAppDBModel.User" Width="1.5" PointX="5.5" PointY="7.875" />
+        <AssociationConnector Association="ForumAppDBModel.FK_ForumTopics_Users" />
+        <AssociationConnector Association="ForumAppDBModel.FK_TopicReplies_Users" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

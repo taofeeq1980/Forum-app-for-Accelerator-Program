@@ -1,0 +1,62 @@
+﻿@using DataObject.Model
+@model Tuple<sp_GetForumTopics_Result, IEnumerable<sp_GetForumTopicReply_Result>>
+
+<div class="profile-body">
+    <h2 class="current-progress text-left" style="padding-left: 50px;">Reply Topic</h2>
+    <div class="row">
+        <form class="reg-page log-reg-page" method="post" action="/Forum/ReplyTopics">
+            <div class="col-md-12 unregisteredDetails">
+                <p class="text-left">Reply Count @(Model != null && Model.Item1 != null ? @Model.Item1.ReplyCount : 0)</p>
+                @{
+                    if (Model != null)
+                    {
+                        <div class="card card-service">
+                            <div class="titext">
+                                <p style="font-size: 13px">
+                                    <b>
+                                        @Model.Item1.ForumTitle
+                                    </b>
+                                </p>
+                            </div>
+                            <div class="titext">
+                                <a><p style="text-align: left;">@Model.Item1.ForumDesc</p></a>
+                            </div>
+                            <div class="titext">
+                                <p style="padding-left: 35px;">by @Model.Item1.Username - @Model.Item1.TimePosted @Model.Item1.DatePosted</p>
+                            </div>
+                        </div>
+                        <br>
+                        foreach (var item in Model.Item2)
+                        {
+                            <div class="card card-service">
+                                <div class="titext" style="padding-bottom:5px">
+                                    <p style="text-align: left;font-size: 13px">
+                                        <a style="display:@(Model.Item1.ReplyCount > 0 ? "inline-block" : "none")">
+                                            <img src="~/assets/img/themes/reply_icon.png" alt="" />
+                                        </a>@item.ReplyMessage<br>
+                                    </p>
+                                </div>
+                                <div class="titext">
+                                    <p style="padding-left: 35px; font-style:italic">by @item.Username - @item.TimeReplied @item.DateReplied</p>
+                                </div>
+                            </div>
+                            <br>
+                        }
+                    }
+                }
+                <br />
+                <div class="form-group has-success has-feedback">
+                    @Html.TextBoxFor(tuple => tuple.Item1.ID, new { @id = "ForumFK", @name = "ForumFK", @style = "display:none" })
+                    <label class="labelStyle">New Post</label>
+                    <textarea class="placeHolderStyle form-control margin-bottom-20" required name="newreply" id="newreply" placeholder="" rows="5" cols="10" type="text"></textarea>
+                </div>
+                <br />
+                <div class="row labelStyle">
+                    <div class="col-sm-6">
+                        <button class="btn-u" type="submit">Post</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

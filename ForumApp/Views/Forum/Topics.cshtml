@@ -1,0 +1,47 @@
+﻿
+@using DataObject.Model
+@model IEnumerable<sp_GetForumTopics_Result>
+
+<div class="profile-body">
+    <h2 class="current-progress text-left" style="padding-left: 50px;">Forum Topics</h2>
+    <div class="row">
+        <form class="reg-page log-reg-page">
+            <div class="col-xs-12 col-md-12 unregisteredDetails">
+                <br>
+                <!-- Success state starts here-->
+                <div class=" row card card-service">
+                    <div class="col-xs-2 col-sm-2">
+                        <img class="img-disco-result img-responsive" src="~/assets/img/themes/forum_icon.png" alt="" width="40">
+                    </div>
+                    <div class="col-xs-7 col-sm-7">
+                        <h3 style="text-align: left;">Topics</h3>
+                    </div>
+                    <div class="col-xs-3 col-sm-3">
+                        <a class="btn" href="/Forum/NewTopic">New Topic</a>
+                    </div>
+                </div>
+                <br>
+                <p class="text-left">@(Model != null ? @Model.Count() : 0) topics discussed</p>
+                @{
+                    if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <div class="card card-service">
+                                <div class="titext">
+                                    <a href="/Forum/ReplyTopics?Id=@item.ID"><p style="color: #6c6cd8;"><b>@item.ForumTitle</b></p></a>
+                                </div>
+                                <div class="titext">
+                                    <a><p style="text-align: left;">@item.ForumDesc</p></a>
+                                </div>
+                                <a><label>@item.ReplyCount</label></a>
+                                <a><img src="~/assets/img/themes/reply_icon.png" alt="" /></a>
+                            </div>
+                            <br>
+                        }
+                    }
+                }
+            </div>
+        </form>
+    </div>
+</div>

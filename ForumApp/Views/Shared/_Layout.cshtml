@@ -1,0 +1,173 @@
+﻿@{
+    var isLoggedIn = User.Identity.IsAuthenticated;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>.NET Forum</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/assets/img/logo/favicon.png">
+    <!-- Web Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="~/assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <!-- CSS Header and Footer -->
+    <link rel="stylesheet" href="~/assets/css/pages/header.css">
+    <link rel="stylesheet" href="~/assets/css/pages/footer.css">
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="~/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link href="~/assets/css/progress-wizard.min.css" rel="stylesheet">
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="~/assets/css/custom.css">
+    <link href="~/assets/css/inHousestyle.css" rel="stylesheet" />
+</head>
+<body class="header-fixed">
+    <div class="wrapper">
+        <!--=== Header v2 ===-->
+        <div class="header-v2 header-sticky">
+            <!-- Navbar -->
+            <div class="navbar navbar-default mega-menu" role="navigation">
+                <div class="container container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="fa fa-bars"></span>
+                        </button>
+                        @*<a class="navbar-brand" href="#">
+                                <img class="default-logo" id="logo-header" src="~/assets/img/logo.png" width="150" alt="Logo">
+                                <img class="shrink-logo" src="~/assets/img/logo-dark.png" width="150" alt="Logo">
+                            </a>*@
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="/" class="slashed">Home</a>
+                            </li>
+                            <li style="display: @(isLoggedIn ? "none" : "block");">
+                                <a href="/Account/Login" class="slashed">Sign in</a>
+                            </li>
+                            <!-- End Buttons -->
+                            <li style="display: @(isLoggedIn ? "none" : "block");">
+                                <a href="/Account/Register" class="">Register</a>
+                            </li>
+                            <li style="display: @(isLoggedIn ? "block" : "none");">
+                                <a class="slashed">@User.Identity.Name</a>
+                            </li>
+                            <li style="display: @(isLoggedIn ? "block" : "none");">
+                                <a href="/Account/SignOut" class="">Sign Out</a>
+                            </li>
+                            <!-- End Buttons -->
+                            <!-- Search -->
+                            <li>
+                                <form id="search" role="search" method="post" action="/Forum/SearchTopic">
+                                    <input name="q" id="q" placeholder="search" tabindex="20" type="text">
+                                    <input value="" tabindex="22" type="submit">
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/navbar-collapse-->
+                </div>
+            </div>
+            <!-- End Navbar -->
+        </div>
+        <!--=== End Header v2 ===-->
+        <div class="bg-other">
+            <div class="container content">
+            </div>
+        </div>
+        <!--=== Profile ===-->
+        <div class="container-fluid">
+            <div class="row" style="padding-top:10px">
+                <!--Left Sidebar-->
+                <div class="col-md-3 md-margin-bottom-40">
+                    <div class="card-did card-serv">
+                        <img class="img-responsive" src="~/assets/img/themes/forum.png" alt="forum">
+                        <h3>.NET Forum</h3>
+                    </div>
+                </div>
+                <!--End Left Sidebar-->
+                <!-- Profile Content -->
+                <div class="col-md-9">
+                    @RenderBody()
+                </div>
+                <!-- End Profile Content -->
+            </div>
+        </div>
+        <!--/container-->
+        <!--=== End Profile ===-->
+        <!--=== Footer Version 1 ===-->
+        <div class="footer-v1">
+            <div class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 text-center md-margin-bottom-40 hidden-xs hidden-sm">
+                            <div class="">
+                                <h5>We are social</h5>
+                            </div>
+                            <ul class="footer-socials list-inline">
+                                <li>
+                                    <a href="#" class="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Instagram">
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--/col-md-3-->
+                        <!-- End Address -->
+                    </div>
+                </div>
+            </div>
+            <!--/footer-->
+            <div class="copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <p>
+                                &copy; 2018 Taofeek
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/copyright-->
+        </div>
+        <!--=== End Footer Version 1 ===-->
+    </div>
+    <!--/wrapper-->
+    <!-- JS Global Compulsory -->
+    <script type="text/javascript" src="~/assets/plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="~/assets/plugins/jquery/jquery-migrate.min.js"></script>
+    <script type="text/javascript" src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- JS Implementing Plugins -->
+    <script type="text/javascript" src="~/assets/plugins/back-to-top.js"></script>
+    <script type="text/javascript" src="~/assets/plugins/smoothScroll.js"></script>
+    <!-- JS Customization -->
+    <script type="text/javascript" src="~/assets/js/custom.js"></script>
+    <!-- JS Page Level -->
+    <script type="text/javascript" src="~/assets/js/app.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            App.init();
+        });
+    </script>
+</body>
+</html>

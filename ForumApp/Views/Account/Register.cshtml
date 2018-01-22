@@ -1,0 +1,111 @@
+﻿@using ForumApp.Models
+@model RegisterViewModel
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <title>::Welcome to .NET Forum - Register::</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/assets/img/logo/favicon.png">
+    <!-- Web Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="~/assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet" href="~/assets/css/pages/page_log_reg_v1.css">
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="~/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="~/assets/css/custom.css">
+</head>
+<body class="header-fixed">
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+    {
+        <div class="wrapper">
+            <!--=== Header v2 ===-->
+            <div class="header-log-reg">
+                <div class="container">
+                    <div class="col-xs-3 col-md-3">
+                    </div>
+                    <div class="col-xs-6 col-md-6">
+                        <a class="logo" href="/">
+                            <img id="logo-header" src="~/assets/img/logo.png" width="200" alt="Logo">
+                        </a>
+                    </div>
+                    <div class="col-xs-3"></div>
+                </div>
+            </div>
+            <!--=== End Header v2 ===-->
+            <!-- Log - Reg -->
+            <div class="log-reg">
+                <div class="container content-md">
+                    <div class="row content-md">
+                        @Html.AntiForgeryToken()
+                        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                            <div class="reg-page log-reg-page">                              
+                                <div class="reg-header">
+                                    <h2>Register</h2>
+                                    <p> @Html.ValidationSummary(true, "", new { @class = "text-danger text-center" })</p>
+                                </div>
+                                <label class="hidden">Name<span class="color-red">*</span></label>
+                                <input class="form-control margin-bottom-20" autocomplete="off" placeholder="Fullname" name="Fullname" id="Fullname" type="text">
+
+                                <label class="hidden">Username <span class="color-red">*</span></label>
+                                <input class="form-control margin-bottom-20" autocomplete="off" placeholder="Username" name="Username" id="Username" type="text">
+
+                                <label class="hidden">Password <span class="color-red">*</span></label>
+                                <input class="form-control autocomplete="off" name="password" id="password" margin-bottom-20" placeholder="Create password" type="password">
+
+                                <label class="hidden">Confirm Password <span class="color-red">*</span></label>
+                                <input class="form-control margin-bottom-20" autocomplete="off" name="ConfirmPassword" id="ConfirmPassword" placeholder="Confirm password" type="password" >
+
+                                <button class="btn-u btn-block" type="submit">Sign up</button>
+                                <br />
+                                <p class="log-reg-quest2">Already have an account? <a class="color-green" href="Login">Sign in</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Log - Reg -->
+        </div>
+    }
+
+    <!--/wrapper-->
+    <!-- JS Global Compulsory -->
+    <script type="text/javascript" src="~/assets/plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="~/assets/plugins/jquery/jquery-migrate.min.js"></script>
+    <script type="text/javascript" src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- JS Implementing Plugins -->
+    <script type="text/javascript" src="~/assets/plugins/back-to-top.js"></script>
+    <script type="text/javascript" src="~/assets/plugins/smoothScroll.js"></script>
+    <!-- JS Customization -->
+    <script type="text/javascript" src="~/assets/js/custom.js"></script>
+    <!-- JS Page Level -->
+    <script type="text/javascript" src="~/assets/js/app.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            App.init();
+        });
+    </script>
+    <!--[if lt IE 9]>
+        <script src="assets/plugins/respond.js"></script>
+        <script src="assets/plugins/html5shiv.js"></script>
+        <script src="assets/plugins/placeholder-IE-fixes.js"></script>
+    <![endif]-->
+
+</body>
+</html>
